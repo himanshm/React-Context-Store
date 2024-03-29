@@ -5,6 +5,7 @@ import Shop from './components/Shop';
 import { DUMMY_PRODUCTS } from './utils/dummy-products.ts';
 import { ProductType } from './utils/dummy-products.ts';
 import Product from './components/Product.tsx';
+import { CartContext } from './context/shopping-cart-context.tsx';
 
 type CartItem = {
   id: string;
@@ -84,7 +85,7 @@ function App() {
   }
 
   return (
-    <>
+    <CartContext.Provider value={{ items: [] }}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -98,7 +99,7 @@ function App() {
           ))}
         </ul>
       </Shop>
-    </>
+    </CartContext.Provider>
   );
 }
 
