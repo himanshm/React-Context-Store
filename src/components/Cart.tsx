@@ -8,12 +8,8 @@ export type CartItem = {
   quantity: number;
 };
 
-type CartProps = {
-  onUpdateItemQuantity: (id: string, quantityChange: number) => void;
-};
-
-const Cart = ({ onUpdateItemQuantity }: CartProps) => {
-  const { items } = useContext(CartContext);
+const Cart = () => {
+  const { items, updateItemQuantity } = useContext(CartContext);
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -35,11 +31,11 @@ const Cart = ({ onUpdateItemQuantity }: CartProps) => {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className='cart-item-actions'>
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>

@@ -59,10 +59,7 @@ function App() {
     });
   }
 
-  function handleUpdateCartItemQuantity(
-    productId: string | number,
-    amount: number
-  ) {
+  function handleUpdateCartItemQuantity(productId: string, amount: number) {
     setShoppingCart((prevShoppingCart: ShoppingCart) => {
       const updatedItems = [...prevShoppingCart.items];
       const updatedItemIndex = updatedItems.findIndex(
@@ -90,14 +87,12 @@ function App() {
   const cartContextValue: CartContextType = {
     items: shoppingCart.items,
     addItemToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
   };
 
   return (
     <CartContext.Provider value={cartContextValue}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+      <Header />
       <Shop>
         <ul id='products'>
           {DUMMY_PRODUCTS.map((product: ProductType) => (
