@@ -7,12 +7,17 @@ export type CartItem = {
   quantity: number;
 };
 
-type CartContextType = {
+export type CartState = {
   items: CartItem[];
 };
 
-const cartContextValue: CartContextType = {
-  items: [],
+export type CartContextType = CartState & {
+  addItemToCart: (id: string) => void;
 };
 
-export const CartContext = createContext(cartContextValue);
+const defaultCartContext: CartContextType = {
+  items: [],
+  addItemToCart: () => {}, // Provide a no-op function or suitable default implementation
+};
+
+export const CartContext = createContext<CartContextType>(defaultCartContext);

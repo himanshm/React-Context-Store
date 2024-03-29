@@ -5,7 +5,10 @@ import Shop from './components/Shop';
 import { DUMMY_PRODUCTS } from './utils/dummy-products.ts';
 import { ProductType } from './utils/dummy-products.ts';
 import Product from './components/Product.tsx';
-import { CartContext } from './context/shopping-cart-context.tsx';
+import {
+  CartContext,
+  type CartContextType,
+} from './context/shopping-cart-context.tsx';
 
 type CartItem = {
   id: string;
@@ -84,8 +87,13 @@ function App() {
     });
   }
 
+  const cartContextValue: CartContextType = {
+    items: shoppingCart.items,
+    addItemToCart: handleAddItemToCart,
+  };
+
   return (
-    <CartContext.Provider value={{ items: [] }}>
+    <CartContext.Provider value={cartContextValue}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -94,7 +102,7 @@ function App() {
         <ul id='products'>
           {DUMMY_PRODUCTS.map((product: ProductType) => (
             <li key={product.id}>
-              <Product product={product} onAddToCart={handleAddItemToCart} />
+              <Product product={product} />
             </li>
           ))}
         </ul>

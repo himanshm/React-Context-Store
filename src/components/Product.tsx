@@ -1,11 +1,13 @@
+import { useContext } from 'react';
+import { CartContext } from '../context/shopping-cart-context';
 import { ProductType } from '../utils/dummy-products';
 
 type ProductProps = {
   product: ProductType;
-  onAddToCart: (id: string) => void;
 };
 
-const Product = ({ product, onAddToCart }: ProductProps) => {
+const Product = ({ product }: ProductProps) => {
+  const { addItemToCart } = useContext(CartContext);
   const { id, image, title, price, description } = product;
   return (
     <article className='product'>
@@ -17,7 +19,7 @@ const Product = ({ product, onAddToCart }: ProductProps) => {
           <p>{description}</p>
         </div>
         <p className='product-actions'>
-          <button onClick={() => onAddToCart(id)}>Add to Cart</button>
+          <button onClick={() => addItemToCart(id)}>Add to Cart</button>
         </p>
       </div>
     </article>
