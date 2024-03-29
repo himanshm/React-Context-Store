@@ -12,7 +12,7 @@ import moonlightDress from '../assets/moonlight-dress.jpg';
 import denimPioneer from '../assets/denim-pioneer.jpg';
 
 // Define an interface for Product
-interface Product {
+export interface ProductType {
   id: string;
   image: string;
   title: string;
@@ -20,7 +20,7 @@ interface Product {
   description: string;
 }
 
-export const DUMMY_PRODUCTS: Product[] = [
+export const DUMMY_PRODUCTS: ProductType[] = [
   {
     id: 'p1',
     image: mochaOvercoat,

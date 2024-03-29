@@ -1,12 +1,10 @@
-// Define the type for each item in the items array
-type CartItem = {
+export type CartItem = {
   id: string;
   name: string;
   price: number;
   quantity: number;
 };
 
-// Define the type for the props that Cart component will receive
 type CartProps = {
   items: CartItem[];
   onUpdateItemQuantity: (id: string, quantityChange: number) => void;

@@ -1,15 +1,9 @@
 import { useRef } from 'react';
 import CartModal from './CartModal';
 import { CartModalRef } from './CartModal';
+import { CartItem } from './Cart';
 
 import logoImg from '../assets/logo.png';
-
-type CartItem = {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-};
 
 type Cart = {
   items: CartItem[];
@@ -17,7 +11,7 @@ type Cart = {
 
 type HeaderProps = {
   cart: Cart;
-  onUpdateCartItemQuantity: (id: number, quantityChange: number) => void;
+  onUpdateCartItemQuantity: (id: string, quantityChange: number) => void;
 };
 
 const Header = ({ cart, onUpdateCartItemQuantity }: HeaderProps) => {

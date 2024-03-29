@@ -1,13 +1,7 @@
 import { forwardRef, ReactNode, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Cart from './Cart';
-
-type CartItem = {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-};
+import { CartItem } from './Cart';
 
 type CartModalProps = {
   cartItems: CartItem[];

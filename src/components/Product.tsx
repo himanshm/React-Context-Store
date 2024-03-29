@@ -1,20 +1,12 @@
+import { ProductType } from '../utils/dummy-products';
+
 type ProductProps = {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  description: string;
+  product: ProductType;
   onAddToCart: (id: string) => void;
 };
 
-const Product = ({
-  id,
-  image,
-  title,
-  price,
-  description,
-  onAddToCart,
-}: ProductProps) => {
+const Product = ({ product, onAddToCart }: ProductProps) => {
+  const { id, image, title, price, description } = product;
   return (
     <article className='product'>
       <img src={image} alt={title} />

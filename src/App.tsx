@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Shop from './components/Shop';
 import { DUMMY_PRODUCTS } from './utils/dummy-products.ts';
+import { ProductType } from './utils/dummy-products.ts';
+import Product from './components/Product.tsx';
 
 type CartItem = {
   id: string;
@@ -87,7 +89,15 @@ function App() {
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
       />
-      <Shop onAddItemToCart={handleAddItemToCart} />
+      <Shop>
+        <ul id='products'>
+          {DUMMY_PRODUCTS.map((product: ProductType) => (
+            <li key={product.id}>
+              <Product product={product} onAddToCart={handleAddItemToCart} />
+            </li>
+          ))}
+        </ul>
+      </Shop>
     </>
   );
 }
