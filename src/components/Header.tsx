@@ -1,12 +1,12 @@
-import { useRef, useContext } from 'react';
+import { useRef } from 'react';
 import CartModal from './CartModal';
 import { CartModalRef } from './CartModal';
-import { CartContext } from '../context/shopping-cart-context';
+import { useCartContext } from '../context/useCartContext';
 
 import logoImg from '../assets/logo.png';
 
 const Header = () => {
-  const { items } = useContext(CartContext);
+  const { items } = useCartContext();
   const modalRef = useRef<CartModalRef>(null);
 
   const cartQuantity = items.length;

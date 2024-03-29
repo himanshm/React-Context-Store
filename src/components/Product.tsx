@@ -1,13 +1,12 @@
-import { useContext } from 'react';
-import { CartContext } from '../context/shopping-cart-context';
 import { ProductType } from '../utils/dummy-products';
+import { useCartContext } from '../context/useCartContext';
 
 type ProductProps = {
   product: ProductType;
 };
 
 const Product = ({ product }: ProductProps) => {
-  const { addItemToCart } = useContext(CartContext);
+  const { addItemToCart } = useCartContext();
   const { id, image, title, price, description } = product;
   return (
     <article className='product'>
