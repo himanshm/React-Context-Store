@@ -6,7 +6,7 @@ export const useCartContext = function () {
 
   if (cartContext === null) {
     throw new Error(
-      'TimersContext is null - that should not be the case! TimersContext was used outside the ContextProvider!'
+      'CartContext is null - that should not be the case! TimersContext was used outside the ContextProvider!'
     );
   }
 
